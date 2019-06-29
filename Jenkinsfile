@@ -4,7 +4,7 @@ node{
 }
     stage('Compile-Package'){
 
-         def mvnHome = tool name: 'maven-3', type: 'maven' 
+         def mvnHome = tool name: 'MAVEN', type: 'maven' 
          sh "${mvnHome}/bin/mvn package"
 } 
     stage('Email Notification'){
@@ -13,8 +13,8 @@ node{
 
 }
      stage('Slack Notification'){
-           slackSend baseUrl: 'https://hooks.slack.com/services/', 
-           channel: 'jenkins-pipeline', color: 'good', 
+           slackSend baseUrl: 'https://esafeworkspace.slack.com/services/hooks/jenkins-ci/', 
+           channel: 'pipeline', color: 'good', 
            message:"${currentBuild.result}: ${BUILD_URL} ${JOB_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", 
            teamDomain: 'esafe build notification', 
            tokenCredentialId: 'slack-notification',
