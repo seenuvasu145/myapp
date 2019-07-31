@@ -7,7 +7,15 @@ node{
          def mvnHome = tool name: 'MAVEN', type: 'maven' 
          sh "${mvnHome}/bin/mvn package"
 } 
-    
+    stage('master-branch-stuff'){
+         agent any
+            when{
+               branch 'master'
+                }
+         steps {
+            echo 'run this stage - ony if the branch = master branch'
+               }
+         }
     
  stage('Slack Notification'){
            slackSend baseUrl: 'https://esafeworkspace.slack.com/services/hooks/jenkins-ci/', 
