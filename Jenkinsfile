@@ -9,14 +9,14 @@ node{
 } 
     stage('master-branch-stuff'){
          agent any
-            when{
-               branch 'master'
+             when{
+                branch 'master'
                 }
-         steps {
-            echo 'run this stage - ony if the branch = master branch'
-               }
-         }
-    
+           steps {
+               echo 'run this stage - ony if the branch = master branch'
+                }
+          }
+  
  stage('Slack Notification'){
            slackSend baseUrl: 'https://esafeworkspace.slack.com/services/hooks/jenkins-ci/', 
            channel: '#pipeline', color: 'good', 
@@ -26,7 +26,7 @@ node{
            body: '${currentBuild.result}: ${BUILD_URL}',
            subject: 'Build Notification: ${JOB_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}'
 
-} 
+}    
 
     stage('Attachment Log'){
           emailext attachLog: true, body: '${currentBuild.result}: ${BUILD_URL}', 
