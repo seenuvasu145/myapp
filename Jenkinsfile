@@ -6,6 +6,7 @@ node{
 
          def mvnHome = tool name: 'maven', type: 'maven' 
          sh "${mvnHome}/bin/mvn package"
+	 sh 'cp target/*.war /opt/seenu/myweb-0.0.5.war'
   } 
     
     stage('Docker image Run and Push to Hub'){
