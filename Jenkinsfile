@@ -20,4 +20,9 @@ node{
 	  sh 'docker push vasucena145/simple-devops-image'
 	  sh 'docker rmi simple-devops-image:latest vasucena145/simple-devops-image -f'
 	}
+  stage('Deploying to Kubernetes Cluster'){
+        
+	  sh 'ansible-playbook -i /opt/k8s-lab/hosts /opt/k8s-lab/kubernetes-esafe-deployment.yml;'
+	  sh 'ansible-playbook -i /opt/k8s-lab/hosts /opt/k8s-lab/kubernetes-esafe-service.yml;'
+	}
 }
