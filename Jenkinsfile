@@ -7,4 +7,9 @@ node{
          def mvnHome = tool name: 'maven', type: 'maven' 
          sh "${mvnHome}/bin/mvn package"
   } 
+    
+    stage('Docker image Run and Push to Hub'){
+        
+		      sh 'ansible-playbook /opt/k8s-lab/create-simple-devops-image.yml'
+	}
 }
