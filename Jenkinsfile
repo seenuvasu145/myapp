@@ -11,6 +11,6 @@ node{
     
     stage('Docker image Run and Push to Hub'){
         
-		      sh 'ansible-playbook /opt/seenu/create-simple-devops-image.yml'
+	 sh 'ansible-playbook /opt/seenu/create-simple-devops-image.yml;'
 	}
 }
